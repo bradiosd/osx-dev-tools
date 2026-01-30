@@ -16,6 +16,7 @@ This document outlines the tools installed on this macOS system and how to use t
   - [Containers & Infrastructure](#containers--infrastructure)
     - [Docker Desktop](#docker-desktop)
     - [Terraform](#terraform)
+    - [tflocal](#tflocal)
     - [AWS CLI](#aws-cli)
   - [Command-line Utilities](#command-line-utilities)
     - [jq](#jq)
@@ -211,6 +212,26 @@ terraform destroy
 ```
 
 **Documentation:** https://www.terraform.io/docs
+
+#### tflocal
+**Purpose:** Wrapper script for Terraform to use with LocalStack for local AWS cloud development and testing.
+
+**Installation:**
+```bash
+brew install terraform-local
+```
+
+**Usage:**
+```bash
+# Use tflocal instead of terraform when working with LocalStack
+tflocal init
+tflocal plan
+tflocal apply
+```
+
+**Note:** Requires LocalStack to be running locally. Automatically configures Terraform to use LocalStack endpoints.
+
+**Documentation:** https://docs.localstack.cloud/user-guide/integrations/terraform/
 
 #### AWS CLI
 **Purpose:** Command-line interface for Amazon Web Services.
