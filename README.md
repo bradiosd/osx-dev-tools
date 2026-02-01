@@ -19,6 +19,7 @@ This document outlines the tools installed on this macOS system and how to use t
     - [tflocal](#tflocal)
     - [AWS CLI](#aws-cli)
     - [Supabase CLI](#supabase-cli)
+    - [SST Dev](#sst-dev)
   - [Command-line Utilities](#command-line-utilities)
     - [jq](#jq)
   - [Version Control & Authentication](#version-control--authentication)
@@ -287,6 +288,43 @@ supabase gen types typescript --local > types/supabase.ts
 ```
 
 **Documentation:** https://supabase.com/docs/guides/cli
+
+#### SST Dev
+**Purpose:** Development environment and deployment tool for serverless applications on AWS. SST makes it easy to build full-stack applications with infrastructure as code.
+
+**Installation:**
+```bash
+curl -fsSL https://sst.dev/install | bash
+```
+
+**Getting Started:**
+```bash
+# Initialize a new SST project
+sst init
+
+# Start local development (Live Lambda Development)
+sst dev
+
+# Deploy to AWS
+sst deploy
+
+# Deploy to a specific stage
+sst deploy --stage production
+
+# Remove all resources
+sst remove
+
+# Open the SST Console
+sst console
+```
+
+**Features:**
+- Live Lambda Development - Test Lambda functions locally with real AWS resources
+- Infrastructure as Code using TypeScript
+- Built-in support for common patterns (APIs, databases, auth, etc.)
+- SST Console for debugging and monitoring
+
+**Documentation:** https://sst.dev/docs
 
 ### Command-line Utilities
 
