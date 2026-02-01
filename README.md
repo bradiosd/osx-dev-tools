@@ -18,6 +18,7 @@ This document outlines the tools installed on this macOS system and how to use t
     - [Terraform](#terraform)
     - [tflocal](#tflocal)
     - [AWS CLI](#aws-cli)
+    - [Supabase CLI](#supabase-cli)
   - [Command-line Utilities](#command-line-utilities)
     - [jq](#jq)
   - [Version Control & Authentication](#version-control--authentication)
@@ -260,6 +261,32 @@ aws s3 ls --profile myprofile
 **Examples Location:** `/opt/homebrew/share/awscli/examples`
 
 **Documentation:** https://docs.aws.amazon.com/cli/
+
+#### Supabase CLI
+**Purpose:** Command-line interface for Supabase - open-source Firebase alternative for database, authentication, storage, and realtime functionality.
+
+**Getting Started:**
+```bash
+# Login to Supabase
+supabase login
+
+# Initialize a new project
+supabase init
+
+# Start local development
+supabase start
+
+# Stop local development
+supabase stop
+
+# Check service status
+supabase status
+
+# Generate TypeScript types from database
+supabase gen types typescript --local > types/supabase.ts
+```
+
+**Documentation:** https://supabase.com/docs/guides/cli
 
 ### Command-line Utilities
 
