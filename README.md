@@ -23,6 +23,7 @@ This document outlines the tools installed on this macOS system and how to use t
   - [Command-line Utilities](#command-line-utilities)
     - [jq](#jq)
   - [Version Control & Authentication](#version-control--authentication)
+    - [GitHub CLI](#github-cli)
     - [SSH Configuration](#ssh-configuration)
 - [Getting Started](#getting-started)
 - [Additional Resources](#additional-resources)
@@ -347,6 +348,76 @@ cat data.json | jq '.items[] | select(.active == true)'
 
 ### Version Control & Authentication
 
+#### GitHub CLI
+**Purpose:** Official command-line tool for GitHub, bringing pull requests, issues, and other GitHub features to your terminal.
+
+**Installation:**
+```bash
+brew install gh
+```
+
+**Authentication:**
+```bash
+# Authenticate with GitHub
+gh auth login
+
+# Check authentication status
+gh auth status
+```
+
+**Environment Variable Configuration:**
+Set the `GH_TOKEN` environment variable to authenticate API requests without interactive login:
+
+```bash
+# Add to ~/.zshrc or ~/.zprofile or ~/.bashprofile
+export GH_TOKEN="your_personal_access_token"
+```
+
+To create a personal access token:
+1. Visit https://github.com/settings/tokens
+2. Click "Generate new token" (classic or fine-grained)
+3. Select appropriate scopes/permissions
+4. Copy the token and add it to your shell configuration
+
+**Common Commands:**
+```bash
+# Create a new repository
+gh repo create
+
+# Clone a repository
+gh repo clone owner/repo
+
+# Create a pull request
+gh pr create
+
+# List pull requests
+gh pr list
+
+# Check out a pull request
+gh pr checkout <number>
+
+# Create an issue
+gh issue create
+
+# List issues
+gh issue list
+
+# View repository in browser
+gh repo view --web
+
+# Run a GitHub Action workflow
+gh workflow run
+
+# View workflow runs
+gh run list
+```
+
+**Configuration:**
+- Config location: `~/.config/gh/`
+- Credentials stored in system keychain
+
+**Documentation:** https://cli.github.com/manual/
+
 #### SSH Configuration
 **Location:** `~/.ssh/config`  
 **Keys:** `~/.ssh/id_ed25519_github` (private), `~/.ssh/id_ed25519_github.pub` (public)
@@ -417,6 +488,7 @@ Some organizations enforce SAML Single Sign-On. If you encounter authentication 
    jq --version
    terraform --version
    aws --version
+   gh --version
    echo $ZSH
    ```
 
