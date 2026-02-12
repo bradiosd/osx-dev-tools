@@ -1,0 +1,7 @@
+# Ignore all files in video and mp3 directories
+video/*
+mp3/*
+
+# Except .gitkeep files
+!video/.gitkeep
+!mp3/.gitkeep
