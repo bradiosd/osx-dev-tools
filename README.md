@@ -8,6 +8,7 @@ This document outlines the tools installed on this macOS system and how to use t
   - [Core Development Tools](#core-development-tools)
     - [Xcode Command Line Tools](#xcode-command-line-tools)
     - [Homebrew](#homebrew)
+    - [Android Studio](#android-studio)
   - [Shell & Terminal](#shell--terminal)
     - [Oh My Zsh](#oh-my-zsh)
   - [Version Managers](#version-managers)
@@ -52,6 +53,58 @@ xcode-select -p
 - Shell environment initialized with: `eval "$(/opt/homebrew/bin/brew shellenv)"`
 
 **Documentation:** https://docs.brew.sh/
+
+#### Android Studio
+**Purpose:** Android IDE for building, running, and debugging Android applications on macOS.
+
+**Prerequisites:**
+```bash
+brew --version
+python3 --version
+pip3 --version
+git --version
+curl --version
+```
+
+**Install Android platform tools:**
+```bash
+brew install android-platform-tools
+adb version
+```
+
+**Download the current macOS ARM DMG:**
+```bash
+curl -L https://developer.android.com/studio -o /tmp/android-studio.html
+python3 - <<'PY'
+import re
+from pathlib import Path
+
+html = Path("/tmp/android-studio.html").read_text()
+match = re.search(r'https://redirector\\.gvt1\\.com/edgedl/android/studio/install/[^"]*mac_arm\\.dmg', html)
+if not match:
+    raise SystemExit("Could not find the current macOS ARM Android Studio DMG link.")
+print(match.group(0))
+PY
+```
+
+Use the printed URL to download the DMG:
+```bash
+curl -L "<ANDROID_STUDIO_DMG_URL>" -o /tmp/android-studio.dmg
+```
+
+**Install from the DMG:**
+```bash
+hdiutil attach /tmp/android-studio.dmg -nobrowse
+cp -R "/Volumes/Android Studio/Android Studio.app" /Applications/
+hdiutil detach "/Volumes/Android Studio"
+```
+
+**Verification:**
+- Open `Android Studio` from Applications or Spotlight
+- Complete the first-run setup wizard
+- Confirm `adb version` still works from the terminal
+
+**Documentation:** https://developer.android.com/studio
 
 ### Shell & Terminal
 
